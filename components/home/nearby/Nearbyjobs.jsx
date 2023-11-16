@@ -5,7 +5,6 @@ import styles from "./nearbyjobs.style";
 import { COLORS } from "../../../constants";
 import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
 import useFetch from "../../../hook/useFetch";
-import axios from "axios";
 
 const NearByjobs = () => {
   const router = useRouter();
@@ -14,8 +13,6 @@ const NearByjobs = () => {
     query: "React developer",
     num_pages: 1,
   });
-
-  // console.log('123123', data)
 
   return (
     <View style={styles.container}>
@@ -34,8 +31,8 @@ const NearByjobs = () => {
           data?.map((job) => (
             <NearbyJobCard
               job={job}
-              key={`nearby-job-${job?.job_id}`}
-              handleNavigate={() => router.push(`/job_details/${job.job_id}`)}
+              key={`nearby-job-${job.job_id}`}
+              handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
             />
           ))
         )}
