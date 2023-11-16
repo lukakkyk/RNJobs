@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -16,13 +16,19 @@ import axios from "axios";
 const Popularjobs = () => {
   const router = useRouter();
 
-  const { data, isLoading, error } = useFetch('search', {
-    query: 'React developer',
+  const { data, isLoading, error } = useFetch("search", {
+    query: "React developer",
     num_pages: 1,
   });
 
-  // console.log('123123', data)
+  const [selectedJob, setSelectedJob] = useState();
 
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+    setSelectedJob(item.job_id);
+  };
+
+  // console.log('123123', data)
 
   return (
     <View style={styles.container}>
@@ -40,7 +46,13 @@ const Popularjobs = () => {
         ) : (
           <FlatList
             data={data}
-            renderItem={({ item }) => <PopularJobCard item={item} />}
+            renderItem={({ item }) => (
+              <PopularJobCard
+                item={item}
+                selectedJob={selectedJob}
+                handleCardPress={handleCardPress}
+              />
+            )}
             keyExtractor={(item) => item?.job_id}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal

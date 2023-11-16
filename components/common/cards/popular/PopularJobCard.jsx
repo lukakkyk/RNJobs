@@ -5,7 +5,7 @@ import { checkImageURL } from "../../../../utils/index";
 const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
   return (
     <TouchableOpacity
-      // onPress={() => handleCardPress(item)}
+      onPress={() => handleCardPress(item)}
       style={styles.container(selectedJob, item)}
     >
       <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
