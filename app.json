@@ -1,5 +1,8 @@
 {
   "expo": {
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "scheme": "acme",
     "web": {
       "bundler": "metro"
